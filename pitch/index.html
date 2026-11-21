@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asistia · Pitch deck</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("../fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("../fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+:root { --pino: #1D5C63; --pino-osc: #12363B; --bruma: #E3EFF0; --ambar: #E9A23B; --ambar-claro: #FBE9CC; --tinta: #1F2A2E; --tinta-2: #55666B; --verde: #3E7D3A; --ladrillo: #A4432F; --papel: #FBFCFC; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #0f2a2e; font-family: "Atkinson Hyperlegible", system-ui, sans-serif; color: var(--tinta); }
+.deck { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 28px 0 60px; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--papel); flex: none; transform-origin: top center; }
+.pad { position: absolute; inset: 0; padding: 64px 76px; display: flex; flex-direction: column; }
+.num { position: absolute; right: 40px; bottom: 26px; font-size: 15px; color: var(--tinta-2); }
+.dark .num { color: rgba(255,255,255,.6); }
+.tag { font-size: 18px; color: var(--pino); font-weight: 700; margin-bottom: 14px; }
+.dark .tag { color: var(--ambar); }
+h1 { font-size: 54px; line-height: 1.08; margin: 0 0 18px; letter-spacing: -.01em; }
+h2 { font-size: 44px; line-height: 1.1; margin: 0 0 22px; letter-spacing: -.01em; }
+p { font-size: 22px; line-height: 1.45; margin: 0 0 12px; }
+.lead { font-size: 26px; color: var(--tinta-2); }
+.dark { background: var(--pino); color: #fff; }
+.dark .lead { color: rgba(255,255,255,.82); }
+.src { position: absolute; left: 76px; bottom: 26px; font-size: 13px; color: var(--tinta-2); max-width: 1000px; }
+.dark .src { color: rgba(255,255,255,.65); }
+.logo { display: flex; align-items: center; gap: 18px; }
+.logo svg { width: 84px; height: 84px; }
+.logo b { font-size: 64px; letter-spacing: .005em; }
+.row { display: flex; gap: 28px; }
+.grow { flex: 1; }
+img.shot { border-radius: 14px; box-shadow: 0 14px 40px rgba(0,0,0,.18); display: block; }
+
+/* 1 portada */
+.s1 .pad { justify-content: center; }
+.s1 .who { margin-top: 44px; font-size: 22px; line-height: 1.5; }
+.s1 .who b { font-size: 26px; display: block; }
+.s1 img.phone { position: absolute; right: 70px; top: 54px; height: 612px; border-radius: 26px; }
+
+/* 2 problema */
+.big { white-space: nowrap; font-size: 104px; font-weight: 700; color: var(--pino); line-height: 1; letter-spacing: -.02em; }
+.big small { font-size: 46px; }
+.who-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: auto; }
+.who-list div { background: var(--bruma); border-radius: 14px; padding: 18px 20px; font-size: 20px; line-height: 1.35; }
+.who-list b { display: block; font-size: 22px; color: var(--pino); margin-bottom: 4px; }
+
+/* 3 solución */
+.flow { display: grid; grid-template-columns: 1fr 50px 1fr 50px 1fr; align-items: stretch; margin: 10px 0 34px; }
+.step { background: #fff; border: 2px solid var(--bruma); border-radius: 18px; padding: 24px 24px; }
+.step .k { width: 46px; height: 46px; border-radius: 50%; background: var(--pino); color: #fff; font-weight: 700; font-size: 22px; display: grid; place-items: center; margin-bottom: 14px; }
+.step b { font-size: 25px; display: block; margin-bottom: 6px; }
+.step span { font-size: 19px; color: var(--tinta-2); line-height: 1.4; }
+.arrow { display: grid; place-items: center; color: var(--ambar); font-size: 38px; font-weight: 700; }
+.benefits { display: flex; gap: 14px; }
+.benefits span { background: var(--ambar-claro); border-radius: 999px; padding: 10px 20px; font-size: 20px; }
+
+/* 4 propuesta de valor */
+table.cmp { border-collapse: collapse; width: 100%; font-size: 20px; }
+.cmp th { text-align: left; padding: 12px 16px; font-size: 18px; color: var(--tinta-2); font-weight: 700; border-bottom: 2px solid var(--bruma); }
+.cmp td { padding: 13px 16px; border-bottom: 1px solid var(--bruma); }
+.cmp td:first-child { font-weight: 700; }
+.cmp tr.us td { background: var(--pino); color: #fff; }
+.cmp tr.us td:first-child { border-radius: 12px 0 0 12px; }
+.cmp tr.us td:last-child { border-radius: 0 12px 12px 0; }
+.y { color: var(--verde); font-weight: 700; }
+.n { color: #9AA5A8; }
+.us .y { color: var(--ambar); }
+
+/* 5 mercado */
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 6px; }
+.seg div { border-radius: 18px; padding: 26px 28px; background: #fff; border: 2px solid var(--bruma); }
+.seg div.first { background: var(--pino); color: #fff; border-color: var(--pino); }
+.seg b { display: block; font-size: 26px; margin-bottom: 8px; }
+.seg p { font-size: 20px; margin: 0; }
+.seg .first p { color: rgba(255,255,255,.88); }
+.users { margin-top: 22px; background: var(--ambar-claro); border-radius: 14px; padding: 16px 22px; font-size: 20px; }
+
+/* 6 MVP */
+.s6 img.desk { position: absolute; left: 76px; top: 214px; width: 700px; }
+.s6 img.mob { position: absolute; left: 830px; top: 150px; height: 520px; border-radius: 18px; }
+.s6 .feat { position: absolute; left: 76px; top: 160px; display: flex; gap: 8px; max-width: 730px; }
+.s6 .feat span { font-size: 16px; white-space: nowrap; background: var(--bruma); border-radius: 999px; padding: 6px 13px; }
+.s6 .url { position: absolute; left: 76px; bottom: 22px; font-size: 18px; color: var(--pino); font-weight: 700; }
+
+/* 7 negocio */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.plan { border: 2px solid var(--bruma); border-radius: 18px; padding: 22px 24px; background: #fff; }
+.plan b { display: block; font-size: 22px; }
+.plan .price { font-size: 40px; font-weight: 700; color: var(--pino); margin: 6px 0 2px; }
+.plan span { font-size: 18px; color: var(--tinta-2); }
+.scenario { margin-top: 28px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; background: var(--bruma); border-radius: 18px; padding: 24px 30px; }
+.scenario .big { font-size: 74px; }
+.scenario p { font-size: 21px; margin: 0; }
+
+/* 8 validación */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.box { border-radius: 18px; padding: 24px 26px; background: #fff; border: 2px solid var(--bruma); }
+.box h3 { font-size: 25px; margin: 0 0 12px; }
+.box ul { margin: 0; padding-left: 22px; font-size: 20px; line-height: 1.5; }
+.box.done { border-color: var(--verde); }
+.box.done h3 { color: var(--verde); }
+.box.next h3 { color: #9A6514; }
+.box.next { border-color: var(--ambar); }
+
+/* 9 equipo */
+.member { display: flex; gap: 22px; align-items: center; background: #fff; border: 2px solid var(--bruma); border-radius: 18px; padding: 22px 26px; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; background: var(--pino); color: #fff; font-size: 34px; font-weight: 700; display: grid; place-items: center; flex: none; }
+.member b { font-size: 26px; display: block; }
+.member span { font-size: 19px; color: var(--tinta-2); }
+.road { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 30px; position: relative; }
+.road div { padding: 22px 20px 0 0; border-top: 4px solid var(--bruma); position: relative; }
+.road div.now { border-top-color: var(--pino); }
+.road div::before { content: ""; position: absolute; top: -12px; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bruma); }
+.road div.now::before { background: var(--pino); }
+.road b { font-size: 22px; display: block; margin-bottom: 6px; }
+.road span { font-size: 18px; color: var(--tinta-2); line-height: 1.4; display: block; }
+
+/* 10 cierre */
+.s10 .pad { justify-content: center; }
+.s10 h1 { font-size: 66px; max-width: 820px; }
+.s10 .cta { display: flex; gap: 40px; align-items: center; margin-top: 30px; }
+.s10 .qr { background: #fff; padding: 14px; border-radius: 16px; width: 190px; height: 190px; }
+.s10 .qr img { width: 100%; height: 100%; display: block; }
+.s10 .cta p { font-size: 24px; }
+.s10 .cta b { color: var(--ambar); }
+
+.nav-help { color: rgba(255,255,255,.7); font-size: 14px; text-align: center; }
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { background: #fff; }
+  .deck { padding: 0; gap: 0; }
+  .slide { transform: none !important; margin: 0 !important; page-break-after: always; break-after: page; }
+  .nav-help { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<p class="nav-help">Asistia · Emprendimiento de Base Tecnológica. Usa las flechas del teclado o desplázate para ver las 10 diapositivas.</p>
+
+<!-- 1. Portada -->
+<section class="slide dark s1" aria-label="Diapositiva 1: Portada">
+  <div class="pad">
+    <div class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff"/><path d="M14 18a6 6 0 0 1 6-6h24a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H29l-9 8v-8a6 6 0 0 1-6-6z" fill="#1D5C63"/><path d="M23 27.5l5.5 5.5L41 20.5" fill="none" stroke="#E9A23B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Asistia</b></div>
+    <h1 style="margin-top:26px;max-width:640px">La agenda que se confirma sola</h1>
+    <p class="lead" style="max-width:600px">Recordatorios por WhatsApp, respuesta con un toque y cupos que vuelven a llenarse.</p>
+    <div class="who"><b>Erick Alejandro Perez Chia</b>Emprendimiento de Base Tecnológica<br>Politécnico Grancolombiano · 2026</div>
+  </div>
+  <img class="phone shot" src="../img/m2_recordatorio.png" alt="Teléfono con un recordatorio de cita de Asistia">
+  <span class="num">1</span>
+</section>
+
+<!-- 2. Problema -->
+<section class="slide s2" aria-label="Diapositiva 2: Problema">
+  <div class="pad">
+    <div class="tag">El problema</div>
+    <div class="row" style="align-items:flex-end;gap:40px">
+      <div class="big">8,7 % <small>a</small> 20 %</div>
+      <p class="lead" style="max-width:520px;margin-bottom:14px">de las citas médicas asignadas en Colombia se pierden porque el paciente no llega y no avisa.</p>
+    </div>
+    <p style="margin-top:22px;max-width:980px">Pasa mientras conseguir una cita es cada vez más difícil: en un año hubo <b>322 reclamos por cada 10.000 afiliados</b>, y la demora en las citas es uno de los motivos principales.</p>
+    <div class="who-list">
+      <div><b>El profesional</b>Pierde el ingreso de la hora reservada y gasta tiempo llamando a confirmar.</div>
+      <div><b>El paciente que espera</b>No se entera de que se liberó un espacio y sigue esperando.</div>
+      <div><b>El sistema de salud</b>Paga por capacidad que no se usa, en plena escasez de citas.</div>
+    </div>
+  </div>
+  <span class="src">Fuentes: Navarro-Romero et al. (2022); "Cerca del 20 %" (2017); Consultorsalud (s.f.).</span>
+  <span class="num">2</span>
+</section>
+
+<!-- 3. Solución -->
+<section class="slide s3" aria-label="Diapositiva 3: Solución">
+  <div class="pad">
+    <div class="tag">La solución</div>
+    <h2>Una plataforma web que confirma las citas por WhatsApp</h2>
+    <div class="flow">
+      <div class="step"><div class="k">1</div><b>Recordatorio</b><span>A los tres días y a las 24 horas, por WhatsApp. El paciente no instala nada.</span></div>
+      <div class="arrow">›</div>
+      <div class="step"><div class="k">2</div><b>Respuesta con un toque</b><span>Confirmar, cancelar o reprogramar desde el mismo mensaje.</span></div>
+      <div class="arrow">›</div>
+      <div class="step"><div class="k">3</div><b>Cupo que se vuelve a llenar</b><span>Si alguien cancela, el espacio se ofrece solo a la lista de espera.</span></div>
+    </div>
+    <div class="benefits"><span>Menos turnos vacíos</span><span>Nadie llamando a confirmar</span><span>Cifra mensual de lo recuperado</span></div>
+  </div>
+  <span class="num">3</span>
+</section>
+
+<!-- 4. Propuesta de valor -->
+<section class="slide s4" aria-label="Diapositiva 4: Propuesta de valor">
+  <div class="pad">
+    <div class="tag">Propuesta de valor</div>
+    <h2>Recordar ya no basta: Asistia recupera el cupo</h2>
+    <table class="cmp">
+      <thead><tr><th></th><th>Recordatorio automático</th><th>Reasigna el cupo cancelado</th><th>Sin cambiar el software clínico</th><th>Mide lo recuperado</th></tr></thead>
+      <tbody>
+        <tr><td>Llamadas manuales</td><td class="n">No</td><td class="n">No</td><td class="y">Sí</td><td class="n">No</td></tr>
+        <tr><td>WhatsApp personal</td><td class="n">No</td><td class="n">A mano</td><td class="y">Sí</td><td class="n">No</td></tr>
+        <tr><td>Software clínico con agenda</td><td class="y">Sí</td><td class="n">No lo anuncia</td><td class="n">Lo reemplaza</td><td class="n">Reportes generales</td></tr>
+        <tr class="us"><td>Asistia</td><td class="y">Sí</td><td class="y">Automático</td><td class="y">Sí</td><td class="y">Sí</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <span class="src">Comparación con la página de producto de AgendaPro para Colombia, consultada en noviembre de 2026.</span>
+  <span class="num">4</span>
+</section>
+
+<!-- 5. Mercado objetivo -->
+<section class="slide s5" aria-label="Diapositiva 5: Mercado objetivo">
+  <div class="pad">
+    <div class="tag">Mercado objetivo</div>
+    <h2>Quién paga y quién lo usa</h2>
+    <div class="seg">
+      <div class="first"><b>Profesionales independientes</b><p>Odontología, psicología, fisioterapia, nutrición y medicina general con consulta particular o prepagada. Primer segmento: los que hoy agendan por WhatsApp en Bogotá.</p></div>
+      <div><b>IPS ambulatorias pequeñas</b><p>Centros de 1 a 10 profesionales con personal administrativo a cargo de la agenda. Más citas por mes, ahorro más visible.</p></div>
+    </div>
+    <div class="users"><b>Usuarios finales:</b> los pacientes de esos prestadores. No pagan; reciben el recordatorio en su WhatsApp y responden con un toque.</div>
+  </div>
+  <span class="num">5</span>
+</section>
+
+<!-- 6. MVP -->
+<section class="slide s6" aria-label="Diapositiva 6: MVP">
+  <div class="pad">
+    <div class="tag">Producto mínimo viable</div>
+    <h2 style="margin:0">El prototipo ya funciona en la web</h2>
+  </div>
+  <div class="feat"><span>Agenda</span><span>Recordatorios</span><span>Respuesta con un toque</span><span>Lista de espera</span><span>Indicadores</span></div>
+  <img class="desk shot" src="../img/m1_agenda.png" alt="Agenda de Asistia con el teléfono del paciente">
+  <img class="mob shot" src="../img/m11_paciente.png" alt="Página del paciente en el celular">
+  <span class="url">menandes.github.io/asistia</span>
+  <span class="num">6</span>
+</section>
+
+<!-- 7. Modelo de negocio -->
+<section class="slide s7" aria-label="Diapositiva 7: Modelo de negocio">
+  <div class="pad">
+    <div class="tag">Modelo de negocio</div>
+    <h2>Suscripción mensual que se paga sola</h2>
+    <div class="plans">
+      <div class="plan"><b>Profesional</b><div class="price">$69.000</div><span>al mes, un profesional</span></div>
+      <div class="plan"><b>Consultorio</b><div class="price">$249.000</div><span>al mes, hasta cinco profesionales</span></div>
+      <div class="plan"><b>IPS</b><div class="price">Por sede</div><span>según el volumen de citas</span></div>
+    </div>
+    <div class="scenario"><div class="big">×20</div><p>Un consultorio con 320 citas al mes que reduce un tercio su inasistencia recupera unas 16 citas, cerca de <b>$1.440.000</b>, frente a una suscripción de $69.000. Costos: nube con pago por uso y mensajes de WhatsApp de fracciones de centavo de dólar.</p></div>
+  </div>
+  <span class="src">Precios y valor de la consulta son hipótesis por validar. Reducción esperada según Gurol-Urganci et al. (2013).</span>
+  <span class="num">7</span>
+</section>
+
+<!-- 8. Validación -->
+<section class="slide s8" aria-label="Diapositiva 8: Validación">
+  <div class="pad">
+    <div class="tag">Validación</div>
+    <h2>Qué probamos y qué sigue</h2>
+    <div class="cols">
+      <div class="box done"><h3>Pruebas funcionales del MVP</h3><ul>
+        <li>Envío de recordatorios a tres días y a 24 horas</li>
+        <li>Confirmación, cancelación y reprogramación con un toque</li>
+        <li>Oferta del cupo a la lista de espera y aceptación</li>
+        <li>Indicadores de inasistencia y cupos recuperados</li></ul></div>
+      <div class="box next"><h3>Prueba con usuarios potenciales</h3><ul>
+        <li>Prestadores y pacientes usan el prototipo con una tarea guiada</li>
+        <li>Encuesta de facilidad de uso, utilidad y precio</li>
+        <li>Meta: 70 % prefiere responder por WhatsApp</li>
+        <li>Meta: 3 prestadores aceptan el precio</li></ul></div>
+    </div>
+  </div>
+  <span class="num">8</span>
+</section>
+
+<!-- 9. Equipo y proyección -->
+<section class="slide s9" aria-label="Diapositiva 9: Equipo y proyección">
+  <div class="pad">
+    <div class="tag">Equipo y proyección</div>
+    <div class="member"><div class="avatar">EP</div><div><b>Erick Alejandro Perez Chia</b><span>Fundador. Producto, desarrollo de la plataforma, infraestructura en la nube y validación con clientes.</span></div></div>
+    <div class="road">
+      <div class="now"><b>Hoy</b><span>MVP web funcionando con mensajes simulados y datos de demostración.</span></div>
+      <div><b>Próximos meses</b><span>WhatsApp real con plantillas aprobadas, backend en la nube y piloto con 3 a 5 consultorios.</span></div>
+      <div><b>Crecimiento</b><span>IPS ambulatorias, otras ciudades y alertas de citas con alto riesgo de inasistencia.</span></div>
+    </div>
+  </div>
+  <span class="num">9</span>
+</section>
+
+<!-- 10. Cierre -->
+<section class="slide dark s10" aria-label="Diapositiva 10: Cierre">
+  <div class="pad">
+    <div class="tag">Asistia</div>
+    <h1>Menos sillas vacías, sin levantar el teléfono.</h1>
+    <div class="cta">
+      <div class="qr"><img src="../img/qr-mvp.svg" alt="Código QR del prototipo"></div>
+      <div><p><b>Prueba el prototipo:</b><br>menandes.github.io/asistia</p><p>Buscamos consultorios que quieran participar en el piloto.</p></div>
+    </div>
+  </div>
+  <span class="num">10</span>
+</section>
+</div>
+<script>
+  // Escala las diapositivas al ancho de la ventana y permite navegar con el teclado.
+  const slides = [...document.querySelectorAll('.slide')];
+  function fit() {
+    if (matchMedia('print').matches) return;
+    const s = Math.min(1, (window.innerWidth - 32) / 1280);
+    slides.forEach((el) => { el.style.transform = `scale(${s})`; el.style.marginBottom = `${(s - 1) * 720}px`; });
+  }
+  addEventListener('resize', fit); fit();
+  addEventListener('keydown', (e) => {
+    const i = slides.findIndex((el) => el.getBoundingClientRect().top > 10) - 1;
+    const cur = i < -1 ? slides.length - 1 : Math.max(0, i === -2 ? slides.length - 1 : i);
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); slides[Math.min(slides.length - 1, cur + 1)].scrollIntoView({ behavior: 'smooth' }); }
+    if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); slides[Math.max(0, cur - 1)].scrollIntoView({ behavior: 'smooth' }); }
+  });
+</script>
+</body>
+</html>
