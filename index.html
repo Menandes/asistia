@@ -6,6 +6,15 @@
   <title>Asistia · Agenda que se confirma sola</title>
   <meta name="description" content="Prototipo funcional de Asistia: agenda web con recordatorios por WhatsApp simulados, confirmación con un toque y lista de espera.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    // Modo oscuro por defecto; si la persona eligió claro, se respeta.
+    (function () {
+      var t = "dark";
+      try { if (localStorage.getItem("asistia-tema") === "light") t = "light"; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <meta name="color-scheme" content="dark light">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
